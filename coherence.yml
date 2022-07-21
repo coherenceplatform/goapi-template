@@ -1,0 +1,23 @@
+backend:
+  type: backend
+  index_file_name: index.html
+  #url_path: /api
+  url_path: /
+  repo_path: backend
+  migration: ["migrate_db.sh"]
+
+  local_packages: ["/app/docker-gs-ping-roach"]
+
+  dev: ["PORT=8080 /app/docker-gs-ping-roach"]
+  prod: ["PORT=8080 /app/docker-gs-ping-roach"]
+
+  system:
+    dev:
+      port: 8080
+
+  resources:
+  - name: db1
+    engine: postgres
+    version: 13
+    type: database
+
